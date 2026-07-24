@@ -12,13 +12,11 @@
 
 <body>
 
-
 <header>
 
 <div class="logo">
 PEPCOKE
 </div>
-
 
 <nav>
 
@@ -31,14 +29,9 @@ PEPCOKE
 
 </nav>
 
-
 </header>
 
-
-
-
 <section class="hero">
-
 
 <div>
 
@@ -46,150 +39,31 @@ PEPCOKE
 Financial Planning Options
 </h1>
 
-
 <p>
-Choose the tools and features that help you manage your financial goals better.
+Choose the investment plan that matches your financial goals.
 </p>
 
-
 </div>
-
 
 <div class="hero-box">
 📈
 </div>
 
-
 </section>
-
-
-
-
 
 <section class="features">
 
-
 <h2>
-Available Packages
+Available Investment Plans
 </h2>
 
+<div class="cards" id="plansContainer">
 
-
-<div class="cards">
-
-
-
-<div class="card">
-
-<h3>
-Basic Plan
-</h3>
-
-<h2>
-Starter
-</h2>
-
-<p>
-✔ Goal tracking</p>
-
-<p>
-✔ Personal dashboard
-</p>
-
-<p>
-✔ Financial tips
-</p>
-
-
-<a href="register.html">
-<button>
-Get Started
-</button>
-</a>
-
+<p>Loading investment plans...</p>
 
 </div>
-
-
-
-
-<div class="card">
-
-<h3>
-Standard Plan
-</h3>
-
-<h2>
-Growth
-</h2>
-
-<p>
-✔ Advanced tracking
-</p>
-
-<p>
-✔ Reports
-</p>
-
-<p>
-✔ Better planning tools
-</p>
-
-
-<a href="register.html">
-<button>
-Get Started
-</button>
-</a>
-
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3>
-Premium Plan
-</h3>
-
-<h2>
-Complete
-</h2>
-
-<p>
-✔ Full dashboard
-</p>
-
-<p>
-✔ Extra features
-</p>
-
-<p>
-✔ Priority support
-</p>
-
-
-<a href="register.html">
-<button>
-Get Started
-</button>
-</a>
-
-
-</div>
-
-
-
-</div>
-
 
 </section>
-
-
-
-
 
 <footer>
 
@@ -199,6 +73,68 @@ Get Started
 
 </footer>
 
+<script>
+
+async function loadPlans() {
+
+    try {
+
+        const response = await fetch(
+            "https://22411b5c-070d-4ace-baf5-1cd9c737da6c-00-dpewii9evv7.spock.replit.dev/api/plans"
+        );
+
+        const plans = await response.json();
+
+        let html = "";
+
+        plans.forEach(plan => {
+
+            html += `
+            <div class="card">
+
+                <h3>${plan.name}</h3>
+
+                <h2>GH₵${plan.minimumAmount}</h2>
+
+                <p><strong>Minimum Investment</strong></p>
+
+                <p>Duration: ${plan.duration} days</p>
+
+                <p>Return: ${plan.returnPercentage}%</p>
+
+                <p>${plan.description}</p>
+
+                <button onclick="location.href='login.html'">
+                    Invest Now
+                </button>
+
+            </div>
+            `;
+
+        });
+
+        if (plans.length === 0) {
+
+            html = "<p>No investment plans are available yet.</p>";
+
+        }
+
+        document.getElementById("plansContainer").innerHTML = html;
+
+    } catch (error) {
+
+        console.log(error);
+
+        document.getElementById("plansContainer").innerHTML =
+            "<p>Unable to load investment plans.</p>";
+
+    }
+
+}
+
+loadPlans();
+
+</script>
 
 </body>
 </html>
