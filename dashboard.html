@@ -176,6 +176,59 @@ Customer Support
 
 </footer>
 
+<script>
+
+async function loadDashboard(){
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    try {
+
+        const response = await fetch(
+            "https://22411b5c-070d-4ace-baf5-1cd9c737da6c-00-dpewii9evv7.spock.replit.dev/api/dashboard",
+            {
+                headers:{
+                    Authorization:"Bearer " + token
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        document.getElementById("balance").innerHTML =
+        "GH₵" + data.balance;
+
+        document.getElementById("investments").innerHTML =
+        data.activeInvestments;
+
+        document.getElementById("earnings").innerHTML =
+        "GH₵" + data.earnings;
+
+        document.getElementById("referrals").innerHTML =
+        data.referrals;
+
+        document.getElementById("transactions").innerHTML =
+        data.transactions;
+
+
+    } catch(error){
+
+        console.log(error);
+        alert("Unable to load dashboard data");
+
+    }
+
+}
+
+loadDashboard();
+
+</script>
+
 <script src="script.js"></script>
 
 </body>
