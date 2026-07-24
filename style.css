@@ -1,0 +1,299 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f5f8ff;
+    color:#222;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* Header */
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:white;
+    box-shadow:0 3px 15px rgba(0,0,0,0.08);
+}
+
+
+.logo{
+    font-size:30px;
+    font-weight:bold;
+    color:#0757c8;
+}
+
+
+nav a{
+    margin-left:20px;
+    font-weight:bold;
+    color:#333;
+}
+
+
+nav a:hover{
+    color:#0757c8;
+}
+
+
+.btn{
+    background:#0757c8;
+    color:white !important;
+    padding:10px 20px;
+    border-radius:25px;
+}
+
+
+
+/* Hero */
+
+.hero{
+    min-height:80vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:70px 8%;
+    background:linear-gradient(135deg,#0757c8,#00a6ff);
+    color:white;
+}
+
+
+.hero h1{
+    font-size:50px;
+    margin-bottom:20px;
+}
+
+
+.hero p{
+    font-size:18px;
+    max-width:500px;
+    margin-bottom:30px;
+}
+
+
+button{
+    background:#ff9800;
+    border:none;
+    color:white;
+    padding:14px 30px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+
+.hero-box{
+    font-size:120px;
+}
+
+
+
+/* Features */
+
+.features{
+    padding:60px 8%;
+    text-align:center;
+}
+
+
+.features h2{
+    color:#0757c8;
+    font-size:35px;
+    margin-bottom:40px;
+}
+
+
+.cards{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+
+.card{
+    background:white;
+    width:300px;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+
+.card h3{
+    color:#0757c8;
+    margin-bottom:15px;
+}
+
+
+
+/* Statistics */
+
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:80px;
+    padding:50px;
+    background:#0757c8;
+    color:white;
+    text-align:center;
+}
+
+
+.stats h2{
+    font-size:40px;
+}
+
+
+
+/* CTA */
+
+.cta{
+    text-align:center;
+    padding:60px;
+}
+
+
+.cta h2{
+    margin-bottom:25px;
+}
+
+
+
+/* Footer */
+
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+}
+
+
+nav{
+    margin-top:20px;
+}
+
+
+nav a{
+    display:inline-block;
+    margin:8px;
+}
+
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+}
+
+
+.hero h1{
+    font-size:35px;
+}
+
+
+.hero-box{
+    margin-top:30px;
+    font-size:80px;
+}
+
+
+.stats{
+    flex-direction:column;
+    gap:30px;
+}
+
+}/* Animations */
+
+.card{
+    transition:0.3s ease;
+}
+
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+
+button{
+    transition:0.3s ease;
+}
+
+
+button:hover{
+    transform:scale(1.05);
+}
+
+
+.hero-box{
+    animation:float 3s infinite ease-in-out;
+}
+
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}.menu-btn{
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+}
+
+
+@media(max-width:768px){
+
+.menu-btn{
+    display:block;
+}
+
+
+nav{
+    display:none;
+    flex-direction:column;
+    width:100%;
+    text-align:center;
+}
+
+
+nav a{
+    margin:15px;
+}
+
+
+nav.active{
+    display:flex;
+}
+
+}
