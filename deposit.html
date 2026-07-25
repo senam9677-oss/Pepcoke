@@ -99,6 +99,12 @@ document.getElementById("depositForm").addEventListener("submit", async function
 
     const token = localStorage.getItem("token");
 
+if (!token) {
+    alert("Please login again.");
+    window.location.href = "login.html";
+    return;
+}
+
     const amount = document.getElementById("amount").value;
     const paymentMethod = document.getElementById("paymentMethod").value;
 
